@@ -13,7 +13,7 @@ def test_search_book():
         driver.get("https://www.chitai-gorod.ru/")
 
     with allure.step("Находим строку поиска и вводим запрос"):
-        search_input = driver.find_element(By.CSS_SELECTOR, "input[type='search']")
+        search_input = driver.find_element(By.CSS_SELECTOR, input_name="search"type="text">)
         search_input.send_keys("Гарри Поттер")
         search_input.send_keys(Keys.RETURN)
 
@@ -44,7 +44,7 @@ def test_add_book_to_cart():
             driver.get("https://www.chitai-gorod.ru/")
 
         with allure.step("Ищем книгу по названию"):
-            search_input = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "input[type='search']")))
+            search_input = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, input_name="search"type="text">)))
             search_input.send_keys("Гарри Поттер")
             search_input.send_keys(Keys.RETURN)
 
@@ -89,7 +89,7 @@ def test_checkout():
         
         # Предварительно: добавляем товар в корзину (можно использовать предыдущий тест или вставить сюда)
         with allure.step("Ищем книгу и добавляем в корзину"):
-            search_input = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "input[type='search']")))
+            search_input = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, input_name="search"type="text">)))
             search_input.send_keys("Гарри Поттер")
             search_input.send_keys(Keys.RETURN)
             first_result = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".product-card")))
@@ -153,8 +153,11 @@ def test_registration():
 
         with allure.step("Переходим к форме регистрации"):
             # Найти кнопку или ссылку "Войти / Регистрация"
-            login_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[data-testid='login']")))
-            login_button.click()
+            <button class="header-controls_btn" aria -label="Меню профиля">
+            <span class="header-controls_icon-wrapper"> </span>
+            <span class="header-controls_text">Войти</span>
+            </button>
+            button.click()
 
         with allure.step("Выбираем регистрацию"):
             register_link = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Регистрация")))
@@ -205,7 +208,7 @@ def test_edit_product_in_cart():
 
         # Предварительно: добавляем товар в корзину
         with allure.step("Ищем книгу и добавляем в корзину"):
-            search_input = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "input[type='search']")))
+            search_input = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, input_name="search"type="text">)))
             search_input.send_keys("Гарри Поттер")
             search_input.send_keys(Keys.RETURN)
             first_result = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".product-card")))
